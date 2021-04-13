@@ -14,6 +14,27 @@ module.exports = {
       recipe: {
         type: Sequelize.STRING
       },
+      UserId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id'
+        }
+      },
+      RatingId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Ratings',
+          key: 'id'
+        }
+      },
+      CommentId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Comments',
+          key: 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
