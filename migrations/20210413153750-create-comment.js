@@ -25,6 +25,13 @@ module.exports = {
           model: 'Users',
           key: 'id'
         }
+      },
+      RecipeId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Recipes",
+          key: "id"
+        }
       }
     });
   },

@@ -26,6 +26,13 @@ module.exports = {
           key: 'id'
         }
       },
+      RecipeId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Recipes",
+          key: "id"
+        }
+      }
     });
   },
   down: async (queryInterface, Sequelize) => {

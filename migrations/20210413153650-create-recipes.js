@@ -21,20 +21,6 @@ module.exports = {
           key: 'id'
         }
       },
-      RatingId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Ratings',
-          key: 'id'
-        }
-      },
-      CommentId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Comments',
-          key: 'id'
-        }
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
