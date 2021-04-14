@@ -75,9 +75,12 @@ const Navigation = () => {
             )}
           </Nav>
           <Form inline>
-          <LinkContainer to="/fuzzysearch">
-                <Nav.Link>Search Our Database</Nav.Link>
-              </LinkContainer>
+            <LinkContainer to="/fuzzysearch">
+              <Nav.Link>Search Our Database</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/spoonsearch">
+              <Nav.Link>Search Spoonacular Database</Nav.Link>
+            </LinkContainer>
           </Form>
         </Navbar.Collapse>
       </Navbar>

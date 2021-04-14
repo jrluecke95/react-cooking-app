@@ -29,7 +29,6 @@ const FuzzySearch = () => {
   const fuse = new Fuse(recipes, options);
 
   const results = fuse.search(searchResults);
-  console.log(results);
 
   return (
     <Container>

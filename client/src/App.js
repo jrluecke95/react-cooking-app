@@ -11,6 +11,7 @@ import AddComment from "./pages/AddComment";
 import AddRecipe from "./pages/AddRecipe";
 import AddReview from "./pages/AddReview";
 import FuzzySearch from "./components/FuzzySearch";
+import SpoonSearch from "./components/SpoonSearch";
 
 //import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <Route path='/fuzzysearch'>
             <FuzzySearch />
+          </Route>
+          <Route path='/spoonsearch'>
+            <SpoonSearch />
           </Route>
         </Switch>
       </Router>
