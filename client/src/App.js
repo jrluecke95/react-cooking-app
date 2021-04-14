@@ -5,7 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navigation from "./components/Navigation";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Recipes from "./pages/Recipes";
+import UserRecipes from "./pages/UserRecipes";
+import Recipe from "./pages/Recipe";
 
 //import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -23,8 +24,11 @@ function App() {
           <Route path='/register'>
             <Register />
           </Route>
-          <Route path='users/recipes'>
-            <Recipes />
+          <Route path='/recipes' exact>
+            <UserRecipes />
+          </Route>
+          <Route path='/recipes/:id'>
+            <Recipe />
           </Route>
         </Switch>
       </Router>

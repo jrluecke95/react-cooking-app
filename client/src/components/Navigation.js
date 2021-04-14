@@ -56,7 +56,7 @@ const Navigation = () => {
               <LinkContainer to="/">
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/users/recipes">
+              <LinkContainer to="/recipes">
                 <Nav.Link>Your Recipes</Nav.Link>
               </LinkContainer>
               <Button onClick={logout}>Logout</Button>

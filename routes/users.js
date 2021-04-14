@@ -101,4 +101,9 @@ router.get('/current', (req, res) => {
   }
 })
 
+router.get('/:id', async (req, res) => {
+  const user = await models.User.findByPk(req.params.id);
+  res.json(user)
+})
+
 module.exports = router;

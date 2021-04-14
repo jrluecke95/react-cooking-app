@@ -8,7 +8,7 @@ const models = require('./models')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-//var recipesRouter = require('./routes/recipes')
+var recipesRouter = require('./routes/recipes')
 
 var app = express();
 const db = require('./models');
@@ -32,6 +32,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/api/v1/users', usersRouter);
-//app.use('/recipes', recipesRouter)
+app.use('/api/v1/recipes', recipesRouter)
 
 module.exports = app;
