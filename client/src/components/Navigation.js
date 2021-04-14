@@ -75,8 +75,9 @@ const Navigation = () => {
             )}
           </Nav>
           <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-success">Search</Button>
+          <LinkContainer to="/fuzzysearch">
+                <Nav.Link>Search Our Database</Nav.Link>
+              </LinkContainer>
           </Form>
         </Navbar.Collapse>
       </Navbar>

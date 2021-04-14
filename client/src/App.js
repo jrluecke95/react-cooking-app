@@ -54,24 +54,3 @@ function App() {
 }
 
 export default App;
-
-
-
-// 0:
-// item:
-// User:
-// id: 1
-// username: "jake"
-// __proto__: Object
-// UserId: 1
-// createdAt: "2021-04-14T15:20:01.276Z"
-// id: 1
-// recipe: "form patties and lightly season them before putting them oj the grill and cooking them to around 145"
-// title: "potatoes"
-// updatedAt: "2021-04-14T15:20:01.276Z"
-// __proto__: Object
-// refIndex: 0
-// score: 0.3333333333333333
-// __proto__: Object
-// length: 1
-// __proto__: Array(0)

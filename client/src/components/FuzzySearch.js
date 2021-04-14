@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Fuse from "fuse.js";
 import { Card, Col, Container, Form, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { LinkContainer } from "react-router-bootstrap";
 
 const FuzzySearch = () => {
   const [recipes, setRecipes] = useState([]);
@@ -44,20 +46,22 @@ const FuzzySearch = () => {
       </Form>
       <Row>
         {results.map(result => {
+          const content = result.item.recipe.split('');
+          const snippet = content.slice(0, 20).join('');
           return (
-            <Col xs={12} sm={6} md={4} lg={3} xl={3}>
+            <Col xs={12} sm={6} md={4} lg={3} xl={3} key={result.item.id}>
               <Card >
                 <Card.Body>
                   <Card.Title>{result.item.title}</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
-                    Card Subtitle
+                    written by {result.item.User.username}
                   </Card.Subtitle>
                   <Card.Text>
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
+                    {snippet}
                   </Card.Text>
-                  <Card.Link href="#">Card Link</Card.Link>
-                  <Card.Link href="#">Another Link</Card.Link>
+                  <LinkContainer to={`/recipes/${result.item.id}`} >
+                      <Card.Link>link to recipe</Card.Link>
+                  </LinkContainer>
                 </Card.Body>
               </Card>
             </Col>
