@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 const models = require('../models');
+const checkAuth = require('../auth/checkAuth');
 
 /* GET users listing. */
-router.post('/create', async (req, res) => {
+router.post('/create', checkAuth, async (req, res) => {
   //check to make sure recipe has all fields filled out
   const { user } = req.session;
   // checks to see if fields are filled out
@@ -61,7 +62,7 @@ router.get('/userrecipes', async (req, res) => {
   res.json(recipes)
 })
 
-router.post('/:id/addcomment', async (req, res) => {
+router.post('/:id/addcomment', checkAuth, async (req, res) => {
   const recipe = await models.Recipe.findByPk(req.params.id)
   if (!recipe) {
     return res.status(404).json({
@@ -99,7 +100,7 @@ router.get('/:id/getcomments', async (req, res) => {
   res.json(comments)
 })
 
-router.post('/:id/addrating', async (req, res) => {
+router.post('/:id/addrating', checkAuth, async (req, res) => {
   const recipe = await models.Recipe.findByPk(req.params.id)
   if (!recipe) {
     return res.status(404).json({
