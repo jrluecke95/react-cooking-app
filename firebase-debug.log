@@ -19,3 +19,12 @@ You're about to initialize a Firebase project in this directory:
 
   /Users/jrluecke95/Projects/DigitalCrafts/Reactive-recipes
 
+[debug] [2021-04-15T16:29:19.392Z] TypeError: Cannot read property 'setRawMode' of null
+    at ReadStream.setRawMode (tty.js:75:28)
+    at Interface._setRawMode (readline.js:298:16)
+    at Interface.close (readline.js:421:10)
+    at ReadStream.ontermend (readline.js:209:10)
+    at ReadStream.emit (events.js:327:22)
+    at ReadStream.EventEmitter.emit (domain.js:467:12)
+    at endReadableNT (internal/streams/readable.js:1327:12)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21)
