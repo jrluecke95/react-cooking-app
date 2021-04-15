@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Form, Button, Container } from "react-bootstrap";
+import { Form, Button, Container, Jumbotron } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import { LinkContainer } from "react-router-bootstrap";
 import { setUser } from "../redux/actions";
 
 const Login = () => {
@@ -46,6 +47,17 @@ const Login = () => {
 
   return (
     <Container>
+      <Jumbotron fluid>
+        <Container>
+          <h1>Login</h1>
+          <p>
+            If you're an existing user please log in here - if not please click below to create an account!
+          </p>
+          <LinkContainer to="/register">
+            <Button>Register</Button>
+          </LinkContainer>
+        </Container>
+      </Jumbotron>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Username</Form.Label>

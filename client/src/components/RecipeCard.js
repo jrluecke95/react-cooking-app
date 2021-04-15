@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Col } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap';
 
 const RecipeCard = (props) => {
   const [ rating, setRating ] = useState('');
@@ -14,8 +14,8 @@ const RecipeCard = (props) => {
   }, [])
 
   return (
-      <Col xs={12} sm={6} md={4} lg={3} xl={3} key={props.id}>
-        <Card >
+      <Col xs={12} sm={6} md={4} lg={3} xl={3} key={props.id} mb={1} className="d-flex">
+        <Card className='mb-4 flex-grow-1'>
           <Card.Body>
             <Card.Title>{props.title}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">

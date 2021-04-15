@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Form, Button, Container } from "react-bootstrap";
+import { Form, Button, Container, Jumbotron } from "react-bootstrap";
 import { useHistory } from "react-router";
+import { LinkContainer } from "react-router-bootstrap";
 
 const Register = () => {
   const [ form, setForm ] = useState({
     username: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
   })
 
   const history = useHistory();
@@ -41,19 +43,40 @@ const Register = () => {
   }
   return (
     <Container>
+      <Jumbotron fluid>
+        <Container>
+          <h1>Register</h1>
+          <p>
+            Please fill out the form below to be able to create your own recipes and post them here as well as comment and rate our existing recipes!
+          </p>
+          <p>Click below if you just want to browse our recipes without an account</p>
+          <LinkContainer to="/">
+            <Button>Click me!</Button>
+          </LinkContainer>
+        </Container>
+      </Jumbotron>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Username</Form.Label>
           <Form.Control type="text" placeholder="Enter email" name='username' onChange={handleChange}/>
         </Form.Group>
-
-        <Form.Group controlId="formBasicPassword">
+        <Form.Group>
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" onChange={handleChange} name='password' />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Form.Group>
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control type="password" placeholder="Confirm Password" onChange={handleChange} name='confirmPassword' />
+        </Form.Group>
+        {form.password !== form.confirmPassword || form.password === '' ? (
+          <Button disabled variant="primary" type="submit">
           Submit
         </Button>
+        ) : (
+          <Button variant="primary" type="submit">
+          Submit
+        </Button>
+        )}
       </Form>
     </Container>
   );
