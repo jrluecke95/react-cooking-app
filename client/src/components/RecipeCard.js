@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Card, Carousel, Col } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import imageAPI from '../secrets'
 
 const RecipeCard = (props) => {
   const [rating, setRating] = useState("");
   const [ search, setSearch ] = useState('')
   const [images, setImages] = useState("");
+
+  // TODO hide api keys in a file to put in gitignore
 
   useEffect(() => {
     fetch(`/api/v1/recipes/${props.id}/getrating`)
@@ -22,7 +25,7 @@ const RecipeCard = (props) => {
   //       method: "GET",
   //       headers: {
   //         "x-rapidapi-key":
-  //           "5ddd6bfef5msh53bd5d1fb439619p1f085fjsnb25672419bb1",
+  //           `${imageAPI}`,
   //         "x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
   //       },
   //     }

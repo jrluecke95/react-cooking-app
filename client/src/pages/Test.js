@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card, Carousel, Button } from "react-bootstrap";
+import imageAPI from '../secrets'
 
 const Test = () => {
   const [images, setImages] = useState("");
@@ -29,7 +30,7 @@ const Test = () => {
       <Card style={{ width: '18rem' }}>
         <Card.Img />
           <Carousel>
-            {images.map((image, index) => {
+            {/* {images.map((image, index) => {
               return (
                 <Carousel.Item>
                 <img height="200" width="200"
@@ -40,7 +41,7 @@ const Test = () => {
               </Carousel.Item>
               )
             })
-          }
+          } */}
             
           </Carousel>
         <Card.Body> 

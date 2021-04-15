@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { spoonAPI } from '../secrets'
 
 const SpoonSearch = () => {
   const [query, setQuery] = useState("");
   const [ results, setResults ] = useState([]);
   const [ renderResults, setRenderResults ] = useState([]);
 
-  // useEffect(() => {
-  //   fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=09e93e3b2c01481c8fd5db5eecd873fd&query=${query}&maxFat=25&number=2&addRecipeInformation=true`)
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     setRenderResults(data);
-  //     console.log(renderResults)
-  //   });
-  // }, [results])
+  useEffect(() => {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${spoonAPI}&query=${query}&number=2&addRecipeInformation=true`)
+    .then((res) => res.json())
+    .then((data) => {
+      setRenderResults(data.results);
+      console.log(renderResults)
+    });
+  }, [results])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,8 +40,8 @@ const SpoonSearch = () => {
         </Form.Group>
         <Button type="submit">Search</Button>
       </Form>
-      {/* <Row>
-        {results.map(result => {
+      <Row>
+        {renderResults.map(result => {
           const content = result.summary.split('');
           const snippet = content.slice(0, 30).join('');
           return (
@@ -60,7 +61,7 @@ const SpoonSearch = () => {
             </Col>
           )
         })}
-      </Row> */}
+      </Row>
     </Container>
   );
 };
