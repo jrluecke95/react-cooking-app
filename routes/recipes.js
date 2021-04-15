@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const models = require('../models');
-const checkAuth = require('../auth/checkAuth');
+const checkAuth = require('../auth/CheckAuth');
 
 /* GET users listing. */
 router.post('/create', checkAuth, async (req, res) => {
