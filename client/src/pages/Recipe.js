@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Alert, Container, Jumbotron } from "react-bootstrap";
+import { Alert, Button, Container, Jumbotron } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { LinkContainer } from "react-router-bootstrap";
 import ModalComment from "../components/ModalComment";
 import ModalReiew from "../components/ModalReiew";
 import './Recipe.css'
@@ -10,7 +12,8 @@ const Recipe = () => {
   const [recipe, setRecipe] = useState([]);
   const [user, setUser] = useState([]);
   const [comments, setComments] = useState([]);
-  const [ rating, setRating ] = useState('')
+  const [ rating, setRating ] = useState('');
+  const loggedIn = useSelector((state) => state.user)
 
   // gets recipe data from backend
   useEffect(() => {
@@ -52,10 +55,20 @@ const Recipe = () => {
         <h1>{recipe.title}</h1>
         <p>written by {user.username}</p>
         <p>{isNaN(rating) ? 'no reviews yet' : `${rating} out of 5 stars`}</p>
-        <p>
-          <ModalReiew /> {' '}
-          <ModalComment />
-        </p>
+          {!loggedIn ? (
+            <>
+              <p>Please log in to comment or rate this recipe</p>
+              <LinkContainer to='/register'>
+                <Button>Register Here</Button>
+              </LinkContainer>
+            </>
+          ) : (
+            <p>
+              <ModalReiew /> {' '}
+              <ModalComment />
+            </p>
+            
+          )}
       </Jumbotron>
 
       {recipe.recipe}
