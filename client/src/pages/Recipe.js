@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Alert, Button, Container, Jumbotron } from "react-bootstrap";
+import { Alert, Container, Jumbotron } from "react-bootstrap";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
 import ModalComment from "../components/ModalComment";
 import ModalReiew from "../components/ModalReiew";
 import './Recipe.css'

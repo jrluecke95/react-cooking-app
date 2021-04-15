@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Col, Container, Jumbotron, Row } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+import { Container, Jumbotron, Row } from "react-bootstrap";
 import RecipeCard from "../components/RecipeCard";
 
 const Home = () => {
@@ -13,6 +12,7 @@ const Home = () => {
         setRecipes(data);
       });
   }, []);
+
   return (
     <Container>
       <Jumbotron fluid>
@@ -30,7 +30,7 @@ const Home = () => {
           snippet[40] = "...";
           snippet.join("");
           return (
-            <RecipeCard title={recipe.title} username='unknown' snippet={snippet} link={`/recipes/${recipe.id}`} />
+            <RecipeCard title={recipe.title} username={recipe.User.username} snippet={snippet} link={`/recipes/${recipe.id}`} id={recipe.id}/>
           );
         })}
       </Row>

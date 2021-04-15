@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Container, Form, Jumbotron } from "react-bootstrap";
-import { useSelector } from "react-redux";
 
 const AddRecipe = () => {
   const [form, setForm] = useState({

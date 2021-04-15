@@ -58,6 +58,7 @@ const FuzzySearch = () => {
               title={result.item.title}
               username={result.item.User.username}
               snippet={snippet}
+              id={result.item.id}
               link={`/recipes/${result.item.id}`}
             />
           );

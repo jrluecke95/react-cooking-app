@@ -7,9 +7,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserRecipes from "./pages/UserRecipes";
 import Recipe from "./pages/Recipe";
-import AddComment from "./pages/AddComment";
 import AddRecipe from "./pages/AddRecipe";
-import AddReview from "./pages/AddReview";
 import FuzzySearch from "./components/FuzzySearch";
 import SpoonSearch from "./components/SpoonSearch";
 
@@ -36,14 +34,8 @@ function App() {
           <Route path='/recipes/:id'>
             <Recipe />
           </Route>
-          <Route path='/:id/addcomment'>
-            <AddComment />
-          </Route>
           <Route path='/addrecipe'>
             <AddRecipe />
-          </Route>
-          <Route path='/:id/addreview'>
-            <AddReview />
           </Route>
           <Route path='/fuzzysearch'>
             <FuzzySearch />

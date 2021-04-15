@@ -36,7 +36,9 @@ const UserRecipes = () => {
               title={recipe.title}
               snippet={snippet}
               username={user.username}
-              link={`/recipes/${recipe.id}`}
+              id={recipe.id}
+              link={`/recipes/${recipe.id}`
+              }
             />
           );
         })}

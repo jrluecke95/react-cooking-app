@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Col } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
-// TODO update this with props and refactor pages where card is at
-
 const RecipeCard = (props) => {
+  const [ rating, setRating ] = useState('');
+
+  useEffect(() => {
+    fetch(`/api/v1/recipes/${props.id}/getrating`)
+    .then(res => res.json())
+    .then(data => {
+      setRating(data)
+    })
+  }, [])
+
   return (
       <Col xs={12} sm={6} md={4} lg={3} xl={3} key={props.id}>
         <Card >
@@ -12,6 +20,9 @@ const RecipeCard = (props) => {
             <Card.Title>{props.title}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">
               written by {props.username}
+            </Card.Subtitle>
+            <Card.Subtitle className="mb-2 text-muted">
+              {isNaN(rating) ? 'no reviews yet' : `${rating} out of 5 rating`}
             </Card.Subtitle>
             <Card.Text>
               {props.snippet}
