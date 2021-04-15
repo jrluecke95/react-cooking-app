@@ -34,7 +34,7 @@ router.post('/create', checkAuth, async (req, res) => {
   return res.status(201).json(newRecipe)
 })
 
-router.get('/', async function(req, res) {
+router.get('/', async (req, res) => {
   const recipes = await models.Recipe.findAll({
     // sends back user data that we want - only uesr and id
     include: [
