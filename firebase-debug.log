@@ -1,0 +1,21 @@
+[debug] [2021-04-15T16:24:32.866Z] ----------------------------------------------------------------------
+[debug] [2021-04-15T16:24:32.870Z] Command:       /Users/jrluecke95/.nvm/versions/node/v14.15.4/bin/node /Users/jrluecke95/.nvm/versions/node/v14.15.4/bin/firebase init
+[debug] [2021-04-15T16:24:32.870Z] CLI Version:   9.10.0
+[debug] [2021-04-15T16:24:32.870Z] Platform:      darwin
+[debug] [2021-04-15T16:24:32.870Z] Node Version:  v14.15.4
+[debug] [2021-04-15T16:24:32.871Z] Time:          Thu Apr 15 2021 12:24:32 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-04-15T16:24:32.871Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-04-15T16:24:32.878Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-04-15T16:24:32.878Z] > authorizing via signed-in user (jrluecke95@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/jrluecke95/Projects/DigitalCrafts/Reactive-recipes
+
