@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Container, Jumbotron, Row } from "react-bootstrap";
+import { Button, Container, Jumbotron, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { LinkContainer } from "react-router-bootstrap";
 import RecipeCard from "../components/RecipeCard";
 
 const UserRecipes = () => {
@@ -20,9 +21,19 @@ const UserRecipes = () => {
       <Jumbotron fluid>
         <Container>
           <h1>Your Recipes</h1>
-          <p>
+          {recipes.length === 0 ? (
+            <>
+              <p>Looks like you haven't submitted any recipes yet! Click below to create your first one</p>
+              <LinkContainer to='/addrecipe'>
+                <Button>Add Recipe</Button>
+              </LinkContainer>
+            </>
+          ) : (
+            <p>
             This page is a collection of your recipes that you've submitted - thanks for contributing!
           </p>
+          )}
+          
         </Container>
       </Jumbotron>
       <Row>
