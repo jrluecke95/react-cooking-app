@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Fuse from "fuse.js";
-import { Card, Col, Container, Form, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { LinkContainer } from "react-router-bootstrap";
+import { Container, Form, Jumbotron, Row } from "react-bootstrap";
+import RecipeCard from "./RecipeCard";
 
 const FuzzySearch = () => {
   const [recipes, setRecipes] = useState([]);
@@ -22,7 +21,7 @@ const FuzzySearch = () => {
 
   const options = {
     includeScore: true,
-    // Search in `author` and in `tags` array
+    // Search in 'title' tags in array
     keys: ["title"],
   };
 
@@ -32,42 +31,38 @@ const FuzzySearch = () => {
 
   return (
     <Container>
-      <Form>
-        <Form.Group>
-          <Form.Label>What are you in the mood for?</Form.Label>
-          <Form.Control
-            onChange={handleChange}
-            type="text"
-            placeholder="name@example.com"
-            name="search"
-          />
-        </Form.Group>
-      </Form>
+      <Jumbotron fluid>
+        <Container>
+          <Form>
+            <Form.Group>
+              <Form.Label><h2>What are you in the mood for?</h2></Form.Label>
+              <Form.Control
+                onChange={handleChange}
+                type="text"
+                placeholder="name@example.com"
+                name="search"
+              />
+            </Form.Group>
+          </Form>
+        </Container>
+      </Jumbotron>
+      
       <Row>
-        {results.map(result => {
-          const content = result.item.recipe.split('');
-          const snippet = content.slice(0, 20).join('');
+        {results.map((result) => {
+          const content = result.item.recipe.split("");
+          const snippet = content.slice(0, 40);
+          snippet[40] = "...";
+          snippet.join("");
           return (
-            <Col xs={12} sm={6} md={4} lg={3} xl={3} key={result.item.id}>
-              <Card >
-                <Card.Body>
-                  <Card.Title>{result.item.title}</Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">
-                    written by {result.item.User.username}
-                  </Card.Subtitle>
-                  <Card.Text>
-                    {snippet}
-                  </Card.Text>
-                  <LinkContainer to={`/recipes/${result.item.id}`} >
-                      <Card.Link>link to recipe</Card.Link>
-                  </LinkContainer>
-                </Card.Body>
-              </Card>
-            </Col>
+            <RecipeCard
+              title={result.item.title}
+              username={result.item.User.username}
+              snippet={snippet}
+              link={`/recipes/${result.item.id}`}
+            />
           );
         })}
       </Row>
-      
     </Container>
   );
 };

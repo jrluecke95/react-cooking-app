@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+import { Container, Jumbotron, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import RecipeCard from "../components/RecipeCard";
 
 const UserRecipes = () => {
   const [recipes, setRecipes] = useState([]);
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     fetch("/api/v1/recipes/userrecipes")
@@ -15,32 +17,30 @@ const UserRecipes = () => {
 
   return (
     <Container>
-      <h1>Your Recipe Page</h1>
+      <Jumbotron fluid>
+        <Container>
+          <h1>Your Recipes</h1>
+          <p>
+            This page is a collection of your recipes that you've submitted - thanks for contributing!
+          </p>
+        </Container>
+      </Jumbotron>
       <Row>
         {recipes.map((recipe) => {
-          const content = recipe.recipe.split('');
-          const snippet = content.slice(0, 20).join('');
+          const content = recipe.recipe.split("");
+          const snippet = content.slice(0, 40);
+          snippet[40] = "...";
+          snippet.join("");
           return (
-            <Col xs={12} sm={6} md={4} lg={3} xl={3} key={recipe.id}>
-                <Card>
-                  <Card.Body>
-                    <Card.Title>{recipe.title}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">
-                      rating goes here
-                    </Card.Subtitle>
-                    <Card.Text>
-                      {snippet}
-                    </Card.Text>
-                    <LinkContainer to={`/recipes/${recipe.id}`} >
-                        <Card.Link>link to recipe</Card.Link>
-                    </LinkContainer>
-                  </Card.Body>
-                </Card>
-              </Col>
+            <RecipeCard
+              title={recipe.title}
+              snippet={snippet}
+              username={user.username}
+              link={`/recipes/${recipe.id}`}
+            />
           );
         })}
       </Row>
-      
     </Container>
   );
 };

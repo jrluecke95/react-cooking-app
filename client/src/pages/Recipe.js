@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Alert, Button, Container, Jumbotron } from "react-bootstrap";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import ModalComment from "../components/ModalComment";
+import ModalReiew from "../components/ModalReiew";
 import './Recipe.css'
 
 const Recipe = () => {
@@ -52,8 +54,8 @@ const Recipe = () => {
         <p>written by {user.username}</p>
         <p>{isNaN(rating) ? 'no reviews yet' : `${rating} out of 5 stars`}</p>
         <p>
-          <Button className="button" variant="primary"><Link className="link"to={`/${id}/addreview`}>Add Review</Link></Button>
-          <Button className="button" variant="primary"><Link className="link"to={`/${id}/addcomment`}>Add Comment</Link></Button>
+          <ModalReiew /> {' '}
+          <ModalComment />
         </p>
       </Jumbotron>
 
