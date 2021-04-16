@@ -14,7 +14,7 @@ const Test = () => {
   //       method: "GET",
   //       headers: {
   //         "x-rapidapi-key":
-  //           "5ddd6bfef5msh53bd5d1fb439619p1f085fjsnb25672419bb1",
+  //           `${imageAPI}`,
   //         "x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
   //       },
   //     }
