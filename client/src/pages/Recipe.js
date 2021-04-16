@@ -81,7 +81,11 @@ const Recipe = () => {
       </Jumbotron>
       <Container className="mb-5">
         <h1>Instructions</h1>
-        {recipe.recipe}
+        {recipe.recipe.split('\n').map(recipe => {
+          return (
+            <p>{recipe}</p>
+          )
+        })}
       </Container>
       
       <Container>
