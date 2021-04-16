@@ -79,7 +79,7 @@ const EditRecipes = () => {
 
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Recipe Text</Form.Label>
-          <Form.Control as="textarea" rows={3} value={form.recipe} name="recipe" onChange={handleChange}/>
+          <Form.Control as="textarea" rows={10} value={form.recipe} name="recipe" onChange={handleChange}/>
         </Form.Group>
         <Form.Group controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />

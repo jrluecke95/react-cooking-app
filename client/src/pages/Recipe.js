@@ -3,6 +3,7 @@ import { Alert, Button, Container, Jumbotron } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { LinkContainer } from "react-router-bootstrap";
+import Comment from "../components/Comment";
 import ModalComment from "../components/ModalComment";
 import ModalReiew from "../components/ModalReiew";
 import './Recipe.css'
@@ -51,7 +52,7 @@ const Recipe = () => {
 
   return (
     <Container>
-      <Jumbotron>
+      <Jumbotron className="mb-3">
         <h1>{recipe.title}</h1>
         <p>written by {user.username}</p>
         <p>{isNaN(rating) ? 'no reviews yet' : `${rating} out of 5 stars`}</p>
@@ -64,21 +65,34 @@ const Recipe = () => {
             </>
           ) : (
             <p>
-              <ModalReiew /> {' '}
-              <ModalComment />
+              {loggedIn.id === recipe.UserId ? (
+                <LinkContainer to={`/${recipe.id}/editrecipe`}>
+                  <Button>Edit Recipe</Button>
+              </LinkContainer>
+              ) : (
+                <>
+                  <ModalReiew /> {' '}
+                  <ModalComment /> 
+                </>
+              )}
             </p>
             
           )}
       </Jumbotron>
-
-      {recipe.recipe}
-      {comments.map((comment) => {
-        return (
-          <Alert key={comment.id} variant="info">
-            {comment.text}
-          </Alert>
-        );
-      })}
+      <Container className="mb-5">
+        <h1>Instructions</h1>
+        {recipe.recipe}
+      </Container>
+      
+      <Container>
+        <h1>Comments</h1>
+        {comments.map((comment) => {
+          return (
+            <Comment id={comment.id} text={comment.text} userId={comment.UserId}/>
+          );
+        })}
+      </Container>
+      
     </Container>
   );
 };

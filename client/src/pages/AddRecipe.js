@@ -63,7 +63,7 @@ const AddRecipe = () => {
           <Form.Control
             as="textarea"
             name="recipe"
-            rows={3}
+            rows={5}
             onChange={handleChange}
           />
         </Form.Group>
