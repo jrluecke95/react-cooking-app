@@ -4,7 +4,8 @@ import {
   Form,
   Button,
   Nav,
-  Container
+  Container,
+  Spinner
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
@@ -45,7 +46,11 @@ const Navigation = () => {
   return (
     
     <Container>
-      {userStatus === 'LOADING' && 'Loading...'}
+      {userStatus === 'LOADING' && (
+        <Spinner animation="border" role="status">
+        <span className="sr-only">Loading...</span>
+      </Spinner>
+      )}
       {userStatus === 'CHECKED' &&
       <Navbar bg="light" expand="lg">
         <Navbar.Brand>Reactive Recipes</Navbar.Brand>
