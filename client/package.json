@@ -23,7 +23,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "postinstall": "cd client && npm install && npm run build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
