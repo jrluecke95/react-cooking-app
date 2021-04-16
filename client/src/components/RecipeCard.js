@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card, Carousel, Col } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { unsplashAPI } from '../secrets'
 
 const RecipeCard = (props) => {
   const [ rating, setRating ] = useState("");
@@ -17,7 +16,7 @@ const RecipeCard = (props) => {
   }, []);
 
   useEffect(() => {
-    fetch(`https://api.unsplash.com/search/photos/?client_id=${unsplashAPI}&page=1&per_page=3&query=${encodedSearch}`)
+    fetch(`https://api.unsplash.com/search/photos/?client_id=ACRdZDxayxoVcjMWDDa6Kaf4WW9WbvG_cL0vnb44Jvg&page=1&per_page=3&query=${encodedSearch}`)
     .then(res => res.json())
     .then(data => [
       setImages(data.results),
