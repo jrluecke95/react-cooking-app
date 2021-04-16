@@ -43,7 +43,10 @@ const Navigation = () => {
   }, [])
   
   return (
+    
     <Container>
+      {userStatus === 'LOADING' && 'Loading...'}
+      {userStatus === 'CHECKED' &&
       <Navbar bg="light" expand="lg">
         <Navbar.Brand>Reactive Recipes</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -85,7 +88,7 @@ const Navigation = () => {
             </LinkContainer>
           </Form>
         </Navbar.Collapse>
-      </Navbar>
+      </Navbar>}
     </Container>
   );
 };
