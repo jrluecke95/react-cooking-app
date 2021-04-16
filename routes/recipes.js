@@ -97,7 +97,7 @@ router.get('/:id/getcomments', async (req, res) => {
     include: [{ model: models.User, attributes: ['username', 'id'] }]
   })
 
-  res.json(comments)
+  res.status(201).json(comments)
 })
 
 router.post('/:id/addrating', checkAuth, async (req, res) => {
@@ -135,6 +135,18 @@ router.get('/:id/getrating', async (req, res) => {
   const averageRating = totalSum / totalRatings
 
   res.json(averageRating.toFixed(2))
+})
+
+router.post('/:id/editrecipe', checkAuth, async (req, res) => {
+  const recipe = await models.Recipe.update({
+    title: req.body.title,
+    recipe: req.body.recipe 
+  }, {
+    where: {
+      id: req.params.id
+    }
+  })
+  res.status(204).json(recipe)
 })
 
 module.exports = router;

@@ -10,7 +10,7 @@ import Recipe from "./pages/Recipe";
 import AddRecipe from "./pages/AddRecipe";
 import FuzzySearch from "./components/FuzzySearch";
 import SpoonSearch from "./components/SpoonSearch";
-import Test from "./pages/Test";
+import EditRecipes from "./pages/EditRecipes";
 
 //import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -44,8 +44,8 @@ function App() {
           <Route path='/spoonsearch'>
             <SpoonSearch />
           </Route>
-          <Route path='/test'>
-            <Test />
+          <Route path='/:id/editrecipe'>
+            <EditRecipes />
           </Route>
         </Switch>
       </Router>

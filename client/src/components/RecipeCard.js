@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Card, Carousel, Col } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import imageAPI, { unsplashAPI } from '../secrets'
+import { unsplashAPI } from '../secrets'
 
 const RecipeCard = (props) => {
-  const [rating, setRating] = useState("");
-  const [ search, setSearch ] = useState('')
-  const [images, setImages] = useState("");
-
-  // TODO hide api keys in a file to put in gitignore
+  const [ rating, setRating ] = useState("");
+  const [ images, setImages ] = useState([]);
+  const encodedSearch = encodeURIComponent(props.title)
 
   useEffect(() => {
     fetch(`/api/v1/recipes/${props.id}/getrating`)
@@ -18,34 +16,14 @@ const RecipeCard = (props) => {
       });
   }, []);
 
-    // useEffect(() => {
-  //   fetch(
-  //     `https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI?q=${encodedTitle}&pageNumber=1&pageSize=3&autoCorrect=true`,
-  //     {
-  //       method: "GET",
-  //       headers: {
-  //         "x-rapidapi-key":
-  //           `${imageAPI}`,
-  //         "x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
-  //       },
-  //     }
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setImages(data.value);
-  //     });
-  // }, [search]);
-
   useEffect(() => {
-    const encodeSearch = encodeURIComponent(props.title)
-    setSearch(encodeSearch)
-    fetch(`https://api.unsplash.com/search/photos/?client_id=${unsplashAPI}&page=1&per_page=5&query=${search}`)
+    fetch(`https://api.unsplash.com/search/photos/?client_id=${unsplashAPI}&page=1&per_page=3&query=${encodedSearch}`)
     .then(res => res.json())
     .then(data => [
-      setImages(data.results)
-      
+      setImages(data.results),
     ])
   }, [])
+  
   
 
   return (
@@ -62,9 +40,7 @@ const RecipeCard = (props) => {
       <Card className="mb-4 flex-grow-1">
       <Card.Img />
           <Carousel>
-            {images.map((image, index) => {
-              const encodeSearch = encodeURIComponent(props.title)
-              setSearch(encodeSearch)
+            {images.map(image => {
               return (
                 <Carousel.Item>
                 <img height="200" width="200"
