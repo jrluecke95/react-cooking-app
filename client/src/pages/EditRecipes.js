@@ -3,6 +3,7 @@ import { Button, Container, Jumbotron, Form } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 import { LinkContainer } from 'react-router-bootstrap';
+import Forbidden from '../components/Forbidden';
 
 const EditRecipes = () => {
   const { id } = useParams();
@@ -58,7 +59,7 @@ const EditRecipes = () => {
       if (data.error) {
         alert(data.error)
       } else {
-        alert('recipe upudated!');
+        alert('recipe updated!');
         history.push('/')
       }
     })
@@ -67,28 +68,33 @@ const EditRecipes = () => {
 
   return (
     <Container>
-      <Jumbotron>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Title</Form.Label>
-          <Form.Control type="title" value={form.title} name="title" onChange={handleChange}/>
-          <Form.Text className="text-muted">
-            Edit this to change your title
-          </Form.Text>
-        </Form.Group>
+      {!loggedIn ? (
+        <Forbidden />
+      ) : (
+        <Jumbotron>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Title</Form.Label>
+              <Form.Control type="title" value={form.title} name="title" onChange={handleChange}/>
+              <Form.Text className="text-muted">
+                Edit this to change your title
+              </Form.Text>
+            </Form.Group>
 
-        <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Recipe Text</Form.Label>
-          <Form.Control as="textarea" rows={10} value={form.recipe} name="recipe" onChange={handleChange}/>
-        </Form.Group>
-        <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+            <Form.Group controlId="exampleForm.ControlTextarea1">
+              <Form.Label>Recipe Text</Form.Label>
+              <Form.Control as="textarea" rows={10} value={form.recipe} name="recipe" onChange={handleChange}/>
+            </Form.Group>
+            <Form.Group controlId="formBasicCheckbox">
+              <Form.Check type="checkbox" label="Check me out" />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
       </Jumbotron>
+      )}
+      
     </Container>
   )
 }

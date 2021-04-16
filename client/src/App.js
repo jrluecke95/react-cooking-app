@@ -11,10 +11,12 @@ import AddRecipe from "./pages/AddRecipe";
 import FuzzySearch from "./components/FuzzySearch";
 import SpoonSearch from "./components/SpoonSearch";
 import EditRecipes from "./pages/EditRecipes";
+import { useSelector } from "react-redux";
 
 //import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
+  const loggedIn = useSelector((state) => state.user)
   return (
       <Router>
           <Navigation />
@@ -45,7 +47,7 @@ function App() {
             <SpoonSearch />
           </Route>
           <Route path='/:id/editrecipe'>
-            <EditRecipes />
+              <EditRecipes />
           </Route>
         </Switch>
       </Router>

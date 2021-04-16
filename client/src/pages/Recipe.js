@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Alert, Button, Container, Jumbotron } from "react-bootstrap";
+import { Button, Container, Jumbotron } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { LinkContainer } from "react-router-bootstrap";
