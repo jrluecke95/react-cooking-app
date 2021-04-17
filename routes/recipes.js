@@ -59,7 +59,7 @@ router.get('/userrecipes', async (req, res) => {
       UserId: user.id
     }
   })
-  res.json(recipes)
+  res.json(btoa(recipes))
 })
 
 router.post('/:id/addcomment', checkAuth, async (req, res) => {
