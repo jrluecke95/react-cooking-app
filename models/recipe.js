@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   Recipe.init({
     title: DataTypes.STRING,
-    recipe: DataTypes.BLOB
+    recipe: DataTypes.LENGTH
   }, {
     sequelize,
     modelName: 'Recipe',

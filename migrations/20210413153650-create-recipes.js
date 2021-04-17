@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       recipe: {
-        type: Sequelize.BLOB
+        type: Sequelize.TEXT
       },
       UserId: {
         type: Sequelize.INTEGER,
