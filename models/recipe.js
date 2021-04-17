@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   Recipe.init({
     title: DataTypes.STRING,
-    recipe: DataTypes.TEXT
+    recipe: DataTypes.BLOB
   }, {
     sequelize,
     modelName: 'Recipe',
