@@ -10,7 +10,12 @@ import './Recipe.css'
 
 const Recipe = () => {
   const { id } = useParams();
-  const [recipe, setRecipe] = useState([]);
+  const [recipe, setRecipe] = useState({
+    title: '',
+    recipe: '',
+    id: '',
+    UserId: ''
+  });
   const [user, setUser] = useState([]);
   const [comments, setComments] = useState([]);
   const [ rating, setRating ] = useState('');
@@ -21,7 +26,12 @@ const Recipe = () => {
     fetch(`/api/v1/recipes/getrecipe/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        setRecipe(data);
+        setRecipe({
+          title: data.title,
+          recipe: data.recipe,
+          id: data.id,
+          UserId: data.UserId
+        });
       });
   }, []);
 

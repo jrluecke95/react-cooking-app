@@ -3,14 +3,12 @@ import React, { useEffect, useState } from 'react'
 
 const Comment = (props) => {
   const [ user, setUser ] = useState('');
-  console.log(props.userId)
-
+  
   useEffect(() => {
     fetch(`/api/v1/users/${props.userId}`)
     .then(res => res.json())
     .then(data => {
       setUser(data)
-      console.log(data)
     })
   }, [])
   
