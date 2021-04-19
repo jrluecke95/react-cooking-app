@@ -48,6 +48,7 @@ const EditRecipes = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*"
       },
       body: JSON.stringify({
         title: form.title,
@@ -63,8 +64,20 @@ const EditRecipes = () => {
         history.push('/')
       }
     })
-
   }
+
+  // const deleteRecipe = () => {
+  //   fetch(`/api/v1/recipes/${recipe.id}/deleterecipe`, {
+  //     method: 'DELETE',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     }
+  //   })
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     alert(data)
+  //   })
+  // }
 
   return (
     <Container>
@@ -90,7 +103,10 @@ const EditRecipes = () => {
             </Form.Group>
             <Button variant="primary" type="submit">
               Submit
-            </Button>
+            </Button> {' '}
+            {/* <Button onClick={deleteRecipe} variant="danger">
+              Delete
+            </Button> */}
           </Form>
       </Jumbotron>
       )}

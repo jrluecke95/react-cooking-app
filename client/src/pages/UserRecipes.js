@@ -13,7 +13,7 @@ const UserRecipes = () => {
     fetch("/api/v1/recipes/userrecipes")
       .then((res) => res.json())
       .then((data) => {
-        setRecipes(atob(data));
+        setRecipes(data);
       });
   }, []);
 

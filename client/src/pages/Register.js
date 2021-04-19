@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button, Container, Jumbotron } from "react-bootstrap";
+import { Form, Button, Container, Jumbotron, Alert } from "react-bootstrap";
 import { useHistory } from "react-router";
 import { LinkContainer } from "react-router-bootstrap";
 
@@ -69,9 +69,15 @@ const Register = () => {
           <Form.Control type="password" placeholder="Confirm Password" onChange={handleChange} name='confirmPassword' />
         </Form.Group>
         {form.password !== form.confirmPassword || form.password === '' ? (
-          <Button disabled variant="primary" type="submit">
-          Submit
-        </Button>
+          <>
+            {form.password.length > 0 && form.confirmPassword.length > 0 && <Alert variant='danger' className='mb-3'>
+              Passwords must match before submitting!
+            </Alert>}
+            
+            <Button disabled variant="primary" type="submit">
+              Submit
+            </Button>
+          </>
         ) : (
           <Button variant="primary" type="submit">
           Submit

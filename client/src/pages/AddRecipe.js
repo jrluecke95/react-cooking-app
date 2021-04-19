@@ -11,7 +11,6 @@ const AddRecipe = () => {
   const loggedIn = useSelector((state) => state.user)
 
   const handleSubmit = (e) => {
-    console.log(form);
     e.preventDefault();
     fetch(`/api/v1/recipes/create`, {
       method: "POST",
@@ -28,6 +27,10 @@ const AddRecipe = () => {
         if (data.error) {
           alert(data.error);
         } else {
+          setForm({
+            title: " ",
+            recipe: " ",
+          })
           alert("recipe posted");
         }
       });
@@ -62,6 +65,7 @@ const AddRecipe = () => {
                 name="title"
                 placeholder="Enter title"
                 onChange={handleChange}
+                value={form.title}
               />
               <Form.Text className="text-muted">Make it original!</Form.Text>
             </Form.Group>
@@ -72,6 +76,7 @@ const AddRecipe = () => {
                 name="recipe"
                 rows={5}
                 onChange={handleChange}
+                value={form.recipe}
               />
             </Form.Group>
             <Button type="submit">Submit Recipe</Button>

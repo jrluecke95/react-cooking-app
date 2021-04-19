@@ -59,7 +59,7 @@ router.get('/userrecipes', async (req, res) => {
       UserId: user.id
     }
   })
-  res.json(btoa(recipes))
+  res.json(recipes)
 })
 
 router.post('/:id/addcomment', checkAuth, async (req, res) => {
@@ -147,6 +147,15 @@ router.post('/:id/editrecipe', checkAuth, async (req, res) => {
     }
   })
   res.status(204).json(recipe)
+})
+
+router.post('/:id/deleterecipe', checkAuth, async (req, res) => {
+  await models.Recipe.destory({
+    where: {
+      id: req.params.id
+    }
+  })
+  res.status(204).json('recipe deleted')
 })
 
 module.exports = router;

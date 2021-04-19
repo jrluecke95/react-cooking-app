@@ -12,7 +12,6 @@ const SpoonSearch = () => {
     .then((res) => res.json())
     .then((data) => {
       setRenderResults(data.results);
-      console.log(renderResults)
     });
   }, [results])
 
@@ -44,8 +43,8 @@ const SpoonSearch = () => {
           const content = result.summary.split('');
           const snippet = content.slice(0, 30).join('');
           return (
-            <Col xs={12} sm={6} md={4} lg={3} xl={3} key={result.id}>
-              <Card>
+            <Col xs={12} sm={6} md={4} lg={3} xl={3} key={result.id} className="d-flex">
+              <Card className="mb-4 flex-grow-1 mt-5">
                 <Card.Img variant="top" src={result.image} />
                 <Card.Body>
                   <Card.Title>{result.title}</Card.Title>
